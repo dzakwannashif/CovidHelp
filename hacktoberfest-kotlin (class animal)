@@ -1,0 +1,57 @@
+package com.example.oopkotlin
+
+class Hewan (jenis : String, nama :String,  berat : Float, berbulu: Boolean, umur: Int) {
+
+    val jenis:String
+    val nama:String
+    val berat:Float
+    val berbulu:String
+    val umur:String
+    val makanan :String? = null
+
+    init {
+        this.jenis = jenis
+        this.nama = nama
+        this.berat =if(berat <= 0) 0.1F else berat
+        this.berbulu=if(berbulu==true) "Mamalia" else "Omnivora"
+        this.umur = if (umur<5) "$nama berumur $umur tahun (Bayi)" else "$nama berumur $umur tahun (Dewasa)"
+    }
+
+    constructor(jenis: String,nama: String, berat: Float, berbulu: Boolean, umur: Int, pemakan: String) : this(jenis,nama,berat,berbulu, umur)
+
+    fun info(){
+        println("Info $jenis" +
+                "\nJenis Hewan = $nama" +
+                "\nBerat = $berat" +
+                "\nberbulu = $berbulu" +
+                "\numur = $umur" +
+                "\nMakanan = $makanan")
+    }
+
+    fun makan(){
+        println("$nama sedang makan untuk menambah berat badannya $berat")
+    }
+
+    fun tidur(){
+        println("$nama sedang tidur untuk istirahat")
+    }
+
+    private val test ="coba aja"
+
+
+
+}
+
+fun main() {
+
+    val harimau = Hewan("Harimau","Tigor",0F,true,6,"Daging")
+    harimau.info()
+    harimau.makan()
+    harimau.tidur()
+
+    val badak = Hewan("Badak","brock", 3F,false,5,"Rumput")
+    badak.info()
+    badak.makan()
+    badak.tidur()
+//    badak.test error karena variable test di private
+}
